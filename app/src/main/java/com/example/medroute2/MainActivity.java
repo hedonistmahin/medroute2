@@ -14,27 +14,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setSelectedItemId(R.id.bottom_search);
+        Intent iHome = new Intent(getApplicationContext(), Sineup.class);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.bottom_home){
-                return true;
-
-            } else if (item.getItemId() == R.id.bottom_search) {
-                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                startActivity(iHome);
                 finish();
-                return true;
-            } else if (item.getItemId() == R.id.bottom_profile) {
-                startActivity(new Intent(getApplicationContext(), user_profile.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-                return true;
-
             }
-
-            return false;
-        });
+        },1000);
     }
 }
