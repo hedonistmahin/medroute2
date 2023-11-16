@@ -41,7 +41,7 @@ public class sign_up extends Activity {
         Password2 = findViewById(R.id.password);
         Go2= findViewById(R.id.go_btn2);
         sign_up = findViewById(R.id.signup_btn);
-        ForgotPassword = findViewById(R.id.forgotbtn3);
+        forgotPassword = findViewById(R.id.forgotbtn3);
 
         auth = FirebaseAuth.getInstance();
 
@@ -67,7 +67,7 @@ public class sign_up extends Activity {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(sign_up.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(sign_up.this, MainActivity.class));
+                                        startActivity(new Intent(sign_up.this, dash_bord.class));
                                         finish();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
@@ -89,20 +89,16 @@ public class sign_up extends Activity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void
-onClick(View view) {
-            }
+            public void onClick(View view ){
+            AlertDialog.Builder builder = new AlertDialog.Builder(sign_up.this);
+            View dialogView = getLayoutInflater().inflate(R.layout.dialog_forgot, null);
 
-            {
-        AlertDialog.Builder builder = new AlertDialog.Builder(sign_up.this);
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_forgot, null);
+            EditText emailBox = dialogView.findViewById(R.id.emailBox);
 
-        EditText emailBox = dialogView.findViewById(R.id.emailBox);
+            builder.setView(dialogView);
+            AlertDialog dialog = builder.create();
 
-        builder.setView(dialogView);
-        AlertDialog dialog = builder.create();
-
-        dialogView.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
+            dialogView.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
 
 
             @Override
