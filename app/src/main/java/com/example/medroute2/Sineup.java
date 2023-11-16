@@ -17,6 +17,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
+
 
 public class Sineup extends Activity {
 
@@ -30,6 +39,8 @@ public class Sineup extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sineup);
+
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -83,20 +94,74 @@ public class Sineup extends Activity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Register is Successfull", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), sign_up.class));
-                            finish();
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Register is Not Successfull", Toast.LENGTH_SHORT).show();
+
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(name) // Set user's name
+                                        .build();
+
+                                user.updateProfile(profileUpdates)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    // Name updated successfully
+                                                    // Now, store additional information like phone number
+                                                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
+                                                    User newUser = new User(name, phone); // Create a User class with appropriate fields
+                                                    userRef.child(user.getUid()).setValue(newUser);
+
+                                                    Toast.makeText(getApplicationContext(), "Register is Successfull", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Register is Not Successfull", Toast.LENGTH_SHORT).show();
+                            }
                         }
+                    }
+                });
+
+
+
                     }
 
 
                 });
-            }
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("contacts");
+        String ContactID= ref.push().getKey();
+        User user1= new User("samara","01256844755");
 
-        });
+        ref.child(ContactID).setValue(user1);
+    }
+
+    public class User {
+        private String fullname;
+        private String phone;
+
+        public User() {
+            // Default constructor required for Firebase
+        }
+
+        public User(String fullname, String phone) {
+            this.fullname = fullname;
+            this.phone = phone;
+        }
+       public void user1(){
+
+        }
+
+        public String getfullName() {
+            return fullname;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+
     }
 }
-
-
