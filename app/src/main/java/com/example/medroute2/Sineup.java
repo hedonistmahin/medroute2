@@ -113,6 +113,8 @@ public class Sineup extends Activity {
                                                     userRef.child(user.getUid()).setValue(newUser);
 
                                                     Toast.makeText(getApplicationContext(), "Register is Successfull", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(getApplicationContext(), sign_up.class));
+                                                    finish();
                                                 }
                                             }
                                         });
