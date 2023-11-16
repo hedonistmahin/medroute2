@@ -84,6 +84,8 @@ public class Sineup extends Activity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Register is Successfull", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), sign_up.class));
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Register is Not Successfull", Toast.LENGTH_SHORT).show();
                         }
