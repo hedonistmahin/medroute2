@@ -2,9 +2,12 @@ package com.example.medroute2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,7 +44,12 @@ public class Sineup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sineup);
 
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(getResources().getColor(R.color.blackTransparent));
+        }
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -121,7 +130,14 @@ public class Sineup extends Activity {
 
 
                             } else {
-                                Toast.makeText(getApplicationContext(), "Register is Not Successfull", Toast.LENGTH_SHORT).show();
+                                // Handle the case where user is null
+                                Toast.makeText(getApplicationContext(), "Registration not successful, please try again", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getApplicationContext(), "User is already registered. Please log in.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Registration not successful, please try again", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
