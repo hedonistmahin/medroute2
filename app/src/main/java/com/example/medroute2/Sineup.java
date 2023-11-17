@@ -65,7 +65,6 @@ public class Sineup extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), sign_up.class));
-                finish();
             }
         });
 

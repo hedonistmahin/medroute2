@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
 
-        Intent iHome = new Intent(getApplicationContext(), Sineup.class);
+        Intent iHome = new Intent(getApplicationContext(), sign_up.class);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -41,6 +41,6 @@ public class MainActivity extends Activity {
                 startActivity(iHome);
                 finish();
             }
-        },3000);
+        },1500);
     }
 }

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".dash_bord">
 
     <LinearLayout
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:orientation="vertical"
         android:background="@drawable/dashbord_shap"
-        android:padding="25dp"
-
-        >
+        android:padding="25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -29,27 +28,20 @@
                 android:textSize="35dp"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
+
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:src="@drawable/baseline_notifications_24"
                 android:layout_gravity="center"
-                android:layout_marginLeft="60dp"
-
-
-
-                />
-
-
-
+                android:layout_marginLeft="60dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="0dp"
-            >
+            android:layout_marginTop="0dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -60,49 +52,30 @@
                 android:layout_centerVertical="true"
                 app:civ_border_width="2dp"
                 app:civ_border_color="#00000000"/>
-
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hi,"
-
                 android:fontFamily="@font/acme"
-
                 android:textColor="@color/white"
-                android:textSize="25dp"
+                android:textSize="25dp" />
 
-
-                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lamia"
-
                 android:fontFamily="@font/acme"
-
                 android:textColor="@color/white"
-                android:textSize="25dp"
-
-
-                />
-
-
-
+                android:textSize="25dp"/>
         </LinearLayout>
-
-
-
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -110,6 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
+        android:layout_below="@id/headerLayout"
+        android:id="@+id/cbf"
         >
 
         <LinearLayout
@@ -220,7 +195,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        >
+        android:id="@+id/bpf"
+        android:layout_below="@id/cbf">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -326,26 +302,30 @@
 
     </LinearLayout>
     <androidx.cardview.widget.CardView
+        android:id="@+id/imageSliderCardView"
         android:layout_width="match_parent"
-        android:layout_height="178dp"
-        app:cardBackgroundColor="@color/prime_color"
+        android:layout_height="200dp"
+        android:layout_below="@id/bpf"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:cardElevation="20dp"
         app:cardCornerRadius="20dp">
 
         <com.denzcoskun.imageslider.ImageSlider
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
             android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:iss_period="1000"
             app:iss_auto_cycle="true"
             app:iss_delay="1000"
             app:iss_corner_radius="20"
             app:iss_title_background="@drawable/gradient"
             />
+
     </androidx.cardview.widget.CardView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
@@ -361,8 +341,7 @@
         app:menu="@menu/bottom_menu"
         android:layout_gravity="bottom"/>
 
-
-</LinearLayout>
+</RelativeLayout>
 
 
 
