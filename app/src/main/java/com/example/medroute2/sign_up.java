@@ -3,6 +3,7 @@ package com.example.medroute2;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class sign_up extends Activity {
     private Button sign_up,ForgotPassword;
     private FirebaseAuth auth;
     TextView forgotPassword;
+    public static final String SHARED_PREFS = "sharedPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -47,6 +49,8 @@ public class sign_up extends Activity {
         forgotPassword = findViewById(R.id.forgotbtn3);
 
         auth = FirebaseAuth.getInstance();
+
+        checkBox();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -76,6 +80,11 @@ public class sign_up extends Activity {
                                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
+                                        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("name","true");
+                                        editor.apply();
+
                                         Toast.makeText(sign_up.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(sign_up.this, dash_bord.class));
                                         finish();
@@ -145,7 +154,17 @@ public class sign_up extends Activity {
             }
         });
         }
+
+    private void checkBox() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        String check = sharedPreferences.getString("name","");
+        if (check.equals("true")){
+            startActivity(new Intent(sign_up.this, dash_bord.class));
+            finish();
+        }
     }
+}
 
 
 

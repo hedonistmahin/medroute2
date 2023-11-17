@@ -1,8 +1,11 @@
 package com.example.medroute2;
 
+import static com.example.medroute2.sign_up.SHARED_PREFS;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -64,20 +67,29 @@ public class user_profile extends Activity {
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                logoutUser();
             }
         });
 
     }
-
-
     private void logoutUser() {
-        mAuth.signOut();
+        // Clear the Remember Me state
+        clearRememberMeState();
+
         // Redirect to login page or another activity
         Intent intent = new Intent(user_profile.this, sign_up.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    private void clearRememberMeState() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Clear Remember Me state
+        editor.remove("name");
+        editor.apply();
     }
 }
 
