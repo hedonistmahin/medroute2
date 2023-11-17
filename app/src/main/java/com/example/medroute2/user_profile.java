@@ -5,20 +5,27 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class user_profile extends Activity {
+
+    private FirebaseAuth mAuth;
 
     private Button Logout;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState){
+        mAuth = FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
@@ -62,4 +69,20 @@ public class user_profile extends Activity {
         });
 
     }
+
+
+    private void logoutUser() {
+        mAuth.signOut();
+        // Redirect to login page or another activity
+        Intent intent = new Intent(user_profile.this, sign_up.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
 }
+
+
+
+
+
+
