@@ -14,23 +14,39 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class user_profile extends Activity {
 
     private FirebaseAuth mAuth;
 
     private Button Logout;
-
-    @SuppressLint("MissingInflatedId")
+    private TextInputEditText profileName, profileEmail, profileNumber, profileAddress;
+    TextView displayName;
+    Button editprofile;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         mAuth = FirebaseAuth.getInstance();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -41,6 +57,15 @@ public class user_profile extends Activity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_search);
+
+        profileName = findViewById(R.id.fullName1);
+        profileEmail = findViewById(R.id.email1);
+        profileNumber = findViewById(R.id.phoneN);
+        profileAddress = findViewById(R.id.address);
+        displayName = findViewById(R.id.fullnameu);
+        editprofile = findViewById(R.id.editbtn);
+        showUserData();
+
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.bottom_home){
@@ -71,7 +96,79 @@ public class user_profile extends Activity {
             }
         });
 
+        editprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passUserData();
+            }
+        });
+
     }
+
+    public void showUserData() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String nameUser = dataSnapshot.child("fullName").getValue(String.class);
+                        String nameEmail = dataSnapshot.child("email").getValue(String.class);
+                        String nameNumber = dataSnapshot.child("phone").getValue(String.class);
+                        String userAddress = dataSnapshot.child("address").getValue(String.class); // Get the address
+
+                        displayName.setText(nameUser); // Set display name
+                        profileName.setText(nameUser);
+                        profileEmail.setText(nameEmail);
+                        profileNumber.setText(nameNumber);
+                        profileAddress.setText(userAddress); // Display the address
+                    } else {
+                        // Handle the case where data for the user does not exist
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Handle error
+                }
+            });
+        }
+    }
+
+
+    public void passUserData() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users").child(userId);
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String nameFromDB = snapshot.child("fullName").getValue(String.class);
+                        String emailFromDB = snapshot.child("email").getValue(String.class);
+                        String phoneNumberFromDB = snapshot.child("phone").getValue(String.class);
+                        String addressFromDB = snapshot.child("address").getValue(String.class);
+                        Intent intent = new Intent(user_profile.this, EditProfileActivity.class);
+                        intent.putExtra("userId", userId); // Pass the user's UID
+                        intent.putExtra("fullName", nameFromDB);
+                        intent.putExtra("email", emailFromDB);
+                        intent.putExtra("phone", phoneNumberFromDB);
+                        intent.putExtra("address", addressFromDB);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle error
+                }
+            });
+        }
+    }
+
+
     private void logoutUser() {
         // Clear the Remember Me state
         clearRememberMeState();

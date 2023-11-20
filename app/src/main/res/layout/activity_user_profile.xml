@@ -32,7 +32,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LAMIA REHAB"
+            android:text=""
+            android:id="@+id/fullnameu"
             android:fontFamily="@font/acme"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -40,6 +41,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/profile_image"
             android:layout_marginLeft="10dp"/>
+
     </RelativeLayout>
 
     <LinearLayout
@@ -59,9 +61,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawableLeft="@drawable/baseline_person2_24"
                 android:drawablePadding="10dp"
-                android:text="LAMIA REHAB"/>
+                android:id="@+id/fullName1"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -77,12 +80,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/email"
                 android:drawablePadding="10dp"
-                android:text="lamia@gmail.com"
-
-
-
-
-
+                android:id="@+id/email1"
                 />
 
 
@@ -100,12 +98,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/call"
                 android:drawablePadding="10dp"
-                android:text="01922222222"
-
-
-
-
-
+                android:id="@+id/phoneN"
                 />
 
 
@@ -124,12 +117,7 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/home"
                 android:drawablePadding="10dp"
-                android:text="Mohammadpur,Dhaka"
-
-
-
-
-
+                android:id="@+id/address"
                 />
 
 
@@ -139,7 +127,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="UPDATE"
+            android:id="@+id/editbtn"
+            android:text="Edit Profile"
             android:textStyle="bold"
             android:textSize="20dp"
             android:background="@drawable/round_button"
@@ -154,9 +143,9 @@
             android:text="logout"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:background="@drawable/round_button"
+            android:background="@color/transparentWhite"
             android:textColor="@color/black"
-            android:backgroundTint="@color/prime_color"/>
+            />
     </LinearLayout>
     </LinearLayout>
 

@@ -76,7 +76,7 @@ public class Sineup extends Activity {
                 final String password = Password1.getEditText().getText().toString().trim();
                 final String name = FullName.getEditText().getText().toString().trim();
                 final String phone = Phone.getEditText().getText().toString().trim();
-
+                final String address = "";
                 if (TextUtils.isEmpty(email)) {
 
                     Email1.setError("Email is Required");
@@ -117,7 +117,8 @@ public class Sineup extends Activity {
                                                     // Name updated successfully
                                                     // Now, store additional information like phone number
                                                     DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users");
-                                                    User newUser = new User(name, phone); // Create a User class with appropriate fields
+
+                                                    User newUser = new User(name, phone, email, address); // Create a User class with appropriate fields
                                                     userRef.child(user.getUid()).setValue(newUser);
 
                                                     Toast.makeText(getApplicationContext(), "Register is Successfull", Toast.LENGTH_SHORT).show();
@@ -148,9 +149,9 @@ public class Sineup extends Activity {
 
 
                 });
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("contacts");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
         String ContactID= ref.push().getKey();
-        User user1= new User("samara","01256844755");
+        User user1= new User();
 
         ref.child(ContactID).setValue(user1);
     }
@@ -158,14 +159,19 @@ public class Sineup extends Activity {
     public class User {
         private String fullname;
         private String phone;
+        private String email;
+        private String address; // Add the new field
+
 
         public User() {
             // Default constructor required for Firebase
         }
 
-        public User(String fullname, String phone) {
+        public User(String fullname, String phone, String email, String address) {
             this.fullname = fullname;
             this.phone = phone;
+            this.email = email;
+            this.address = address;
         }
        public void user1(){
 
@@ -177,6 +183,9 @@ public class Sineup extends Activity {
 
         public String getPhone() {
             return phone;
+        }
+        public String getEmail() {
+            return email;
         }
 
 
