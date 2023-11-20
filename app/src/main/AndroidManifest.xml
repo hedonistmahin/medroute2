@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Medroute2"
         tools:targetApi="34">
         <activity
+            android:name=".ICU"
+            android:exported="false" />
+        <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
         <activity

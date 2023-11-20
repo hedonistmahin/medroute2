@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -26,6 +29,7 @@ public class dash_bord extends Activity {
 
     private FirebaseAuth mAuth;
     TextView displayNamed;
+    RelativeLayout relativeLayoutICU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -33,6 +37,15 @@ public class dash_bord extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_bord);
+        relativeLayoutICU=findViewById(R.id.icu);
+         relativeLayoutICU.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intentICU= new Intent(dash_bord.this, ICU.class);
+                 startActivity(intentICU);
+             }
+         });
+
 
         displayNamed = findViewById(R.id.displayName);
         showData();
