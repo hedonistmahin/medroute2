@@ -1,6 +1,7 @@
 package com.example.medroute2;
 
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,10 +10,19 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+//new
+import androidx.annotation.NonNull;
+import android.net.Uri;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import android.webkit.MimeTypeMap;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -22,10 +32,22 @@ public class EditProfileActivity extends AppCompatActivity {
     DatabaseReference reference;
     ProgressDialog progressDialog;
 
+    //new
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private Uri imageUri;
+    private StorageReference storageRef;
+    TextView selectImageButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        //new
+        selectImageButton = findViewById(R.id.selectImageButton);
+        selectImageButton.setOnClickListener(view -> openGallery());
+
 
         reference = FirebaseDatabase.getInstance().getReference("users");
 
@@ -105,4 +127,57 @@ public class EditProfileActivity extends AppCompatActivity {
             progressDialog.dismiss();
         }
     }
+    //new
+    private void openGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imageUri = data.getData();
+            uploadImage();
+        }
+    }
+
+    private void uploadImage() {
+        if (imageUri != null) {
+            // Create a reference to store the image in Firebase Storage
+            StorageReference fileReference = storageRef.child("profile_images/" + userId + "/" + System.currentTimeMillis() + "." + getFileExtension(imageUri));
+
+            // Upload image to Firebase Storage
+            fileReference.putFile(imageUri)
+                    .addOnSuccessListener(taskSnapshot -> {
+                        // Get the image download URL from Firebase Storage
+                        fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                            // Save the image URL to the user's data in the Realtime Database
+                            reference.child(userId).child("profileImageUrl").setValue(uri.toString());
+
+                            // Show a message or update UI upon successful image upload
+                            Toast.makeText(EditProfileActivity.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                        });
+                    })
+                    .addOnFailureListener(e -> {
+                        // Handle image upload failure
+                        Toast.makeText(EditProfileActivity.this, "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    // ... (Other methods)
+
+    // getFileExtension() method to get the file extension from the URI
+    private String getFileExtension(Uri uri) {
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+    }
 }
+
+
+
