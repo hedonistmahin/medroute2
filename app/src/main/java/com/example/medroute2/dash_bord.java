@@ -30,6 +30,7 @@ public class dash_bord extends Activity {
     private FirebaseAuth mAuth;
     TextView displayNamed;
     RelativeLayout relativeLayoutICU;
+    RelativeLayout relativeLayoutBed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -38,11 +39,20 @@ public class dash_bord extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_bord);
         relativeLayoutICU=findViewById(R.id.icu);
+        relativeLayoutBed=findViewById(R.id.bed);
          relativeLayoutICU.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  Intent intentICU= new Intent(dash_bord.this, ICU.class);
                  startActivity(intentICU);
+             }
+         });
+
+         relativeLayoutBed.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intentBed= new Intent(dash_bord.this, Bed.class);
+                 startActivity(intentBed);
              }
          });
 
