@@ -34,7 +34,7 @@ public class dash_bord extends Activity {
     private FirebaseAuth mAuth;
     TextView displayNamed;
     RelativeLayout relativeLayoutICU;
-    RelativeLayout relativeLayoutBed;
+    RelativeLayout relativeLayoutBed, relativeLayoutBlood;
     CircleImageView profileimage1;
 
     @Override
@@ -45,6 +45,7 @@ public class dash_bord extends Activity {
         setContentView(R.layout.activity_dash_bord);
         relativeLayoutICU=findViewById(R.id.icu);
         relativeLayoutBed=findViewById(R.id.bed);
+        relativeLayoutBlood=findViewById(R.id.blood);
         profileimage1 = findViewById(R.id.profile_image);
          relativeLayoutICU.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -61,6 +62,14 @@ public class dash_bord extends Activity {
                  startActivity(intentBed);
              }
          });
+
+        relativeLayoutBlood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentBed= new Intent(dash_bord.this, BloodBankPage.class);
+                startActivity(intentBed);
+            }
+        });
 
 
         displayNamed = findViewById(R.id.displayName);
