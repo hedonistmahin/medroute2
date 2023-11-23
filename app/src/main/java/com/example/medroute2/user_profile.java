@@ -189,9 +189,3 @@ public class user_profile extends Activity {
         editor.apply();
     }
 }
-
-
-
-
-
-

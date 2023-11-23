@@ -45,6 +45,7 @@
                 android:layout_gravity="center" />
 
             <TextView
+                android:id="@+id/selectImageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Change Profile picture"
