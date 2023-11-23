@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -25,13 +27,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class dash_bord extends Activity {
 
     private FirebaseAuth mAuth;
     TextView displayNamed;
     RelativeLayout relativeLayoutICU;
-    RelativeLayout relativeLayoutBed;
-    RelativeLayout relativeLayoutBlood1;
+    RelativeLayout relativeLayoutBed, relativeLayoutBlood;
+    CircleImageView profileimage1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -41,15 +45,8 @@ public class dash_bord extends Activity {
         setContentView(R.layout.activity_dash_bord);
         relativeLayoutICU=findViewById(R.id.icu);
         relativeLayoutBed=findViewById(R.id.bed);
-        relativeLayoutBlood1=findViewById(R.id.blood);
-        relativeLayoutBlood1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBlood=new Intent(dash_bord.this,BloodBankPage.class);
-                startActivity(intentBlood);
-            }
-        });
-
+        relativeLayoutBlood=findViewById(R.id.blood);
+        profileimage1 = findViewById(R.id.profile_image);
          relativeLayoutICU.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -66,6 +63,14 @@ public class dash_bord extends Activity {
              }
          });
 
+        relativeLayoutBlood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentBed= new Intent(dash_bord.this, BloodBankPage.class);
+                startActivity(intentBed);
+            }
+        });
+
 
         displayNamed = findViewById(R.id.displayName);
         showData();
@@ -80,11 +85,16 @@ public class dash_bord extends Activity {
         ImageSlider imageSlider = findViewById(R.id.imageSlider);
         ArrayList<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(R.drawable.a1, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.b2, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.c3, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.d4, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.e5, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.a11, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.b22, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.c33, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.d44, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.e55, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.f1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.g1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.h1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.i1, ScaleTypes.FIT));
+
 
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
@@ -121,7 +131,19 @@ public class dash_bord extends Activity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         String nameUser = dataSnapshot.child("fullName").getValue(String.class);
+                        String profileImageUrl = dataSnapshot.child("profileImageUrl").getValue(String.class); // Get the profile image URL
+
                         displayNamed.setText(nameUser); // Set display name
+
+                        // Load and display the profile image using Glide
+                        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+                            CircleImageView profileImage = findViewById(R.id.profile_image);
+                            Glide.with(dash_bord.this)
+                                    .load(profileImageUrl)
+                                    .skipMemoryCache(true)  // Skip memory cache
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)  // Skip disk cache
+                                    .into(profileimage1);
+                        }
                     } else {
                         // Handle the case where data for the user does not exist
                     }
@@ -134,4 +156,5 @@ public class dash_bord extends Activity {
             });
         }
     }
+
 }
