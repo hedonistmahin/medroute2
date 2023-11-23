@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,6 +33,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class user_profile extends Activity {
 
     private FirebaseAuth mAuth;
@@ -39,6 +43,7 @@ public class user_profile extends Activity {
     private TextInputEditText profileName, profileEmail, profileNumber, profileAddress;
     TextView displayName;
     Button editprofile;
+    CircleImageView profileimage;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         mAuth = FirebaseAuth.getInstance();
@@ -64,6 +69,7 @@ public class user_profile extends Activity {
         profileAddress = findViewById(R.id.address);
         displayName = findViewById(R.id.fullnameu);
         editprofile = findViewById(R.id.editbtn);
+        profileimage = findViewById(R.id.profile_image2);
         showUserData();
 
 
@@ -116,13 +122,23 @@ public class user_profile extends Activity {
                         String nameUser = dataSnapshot.child("fullName").getValue(String.class);
                         String nameEmail = dataSnapshot.child("email").getValue(String.class);
                         String nameNumber = dataSnapshot.child("phone").getValue(String.class);
-                        String userAddress = dataSnapshot.child("address").getValue(String.class); // Get the address
+                        String userAddress = dataSnapshot.child("address").getValue(String.class);
+                        String profileImageUrl = dataSnapshot.child("profileImageUrl").getValue(String.class); // Get the profile image URL
 
                         displayName.setText(nameUser); // Set display name
                         profileName.setText(nameUser);
                         profileEmail.setText(nameEmail);
                         profileNumber.setText(nameNumber);
                         profileAddress.setText(userAddress); // Display the address
+
+                        // Load and display the profile image using Glide
+                        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+                            Glide.with(user_profile.this)
+                                    .load(profileImageUrl)
+                                    .skipMemoryCache(true)  // Skip memory cache
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)  // Skip disk cache
+                                    .into(profileimage);
+                        }
                     } else {
                         // Handle the case where data for the user does not exist
                     }
@@ -135,6 +151,7 @@ public class user_profile extends Activity {
             });
         }
     }
+
 
 
     public void passUserData() {
@@ -150,12 +167,14 @@ public class user_profile extends Activity {
                         String emailFromDB = snapshot.child("email").getValue(String.class);
                         String phoneNumberFromDB = snapshot.child("phone").getValue(String.class);
                         String addressFromDB = snapshot.child("address").getValue(String.class);
+                        String profileImageUrl = snapshot.child("profileImageUrl").getValue(String.class); // Get the profile image URL
                         Intent intent = new Intent(user_profile.this, EditProfileActivity.class);
                         intent.putExtra("userId", userId); // Pass the user's UID
                         intent.putExtra("fullName", nameFromDB);
                         intent.putExtra("email", emailFromDB);
                         intent.putExtra("phone", phoneNumberFromDB);
                         intent.putExtra("address", addressFromDB);
+                        intent.putExtra("profileImageUrl", profileImageUrl); // Pass the profile image URL
                         startActivity(intent);
                     }
                 }
@@ -167,6 +186,7 @@ public class user_profile extends Activity {
             });
         }
     }
+
 
 
     private void logoutUser() {

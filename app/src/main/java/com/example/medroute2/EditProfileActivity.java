@@ -3,52 +3,56 @@ package com.example.medroute2;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-//new
-import androidx.annotation.NonNull;
-import android.net.Uri;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import android.webkit.MimeTypeMap;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     EditText editName, editEmail, editNumber, editAddress;
     Button saveButton;
-    String userId, nameUser, emailUser, numberUser, addressUser;
+    String userId, nameUser, emailUser, numberUser, addressUser, profileImageUrl;
     DatabaseReference reference;
     ProgressDialog progressDialog;
 
-    //new
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageReference storageRef;
     TextView selectImageButton;
-
+    CircleImageView profileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        //new
         selectImageButton = findViewById(R.id.selectImageButton);
+        profileImage = findViewById(R.id.profile_image1);
+
         selectImageButton.setOnClickListener(view -> openGallery());
 
-
+        storageRef = FirebaseStorage.getInstance().getReference();
         reference = FirebaseDatabase.getInstance().getReference("users");
 
         editName = findViewById(R.id.editName);
@@ -66,13 +70,10 @@ public class EditProfileActivity extends AppCompatActivity {
             window.setStatusBarColor(getResources().getColor(R.color.blackTransparent));
         }
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLoadingIndicator();
-                saveChanges();
-                startActivity(new Intent(getApplicationContext(), user_profile.class));
-            }
+        saveButton.setOnClickListener(view -> {
+            showLoadingIndicator();
+            saveChanges();
+            startActivity(new Intent(getApplicationContext(), user_profile.class));
         });
     }
 
@@ -83,12 +84,24 @@ public class EditProfileActivity extends AppCompatActivity {
         emailUser = intent.getStringExtra("email");
         numberUser = intent.getStringExtra("phone");
         addressUser = intent.getStringExtra("address");
+        profileImageUrl = intent.getStringExtra("profileImageUrl");
 
         // Set retrieved data to EditText fields
         editName.setText(nameUser);
         editEmail.setText(emailUser);
         editNumber.setText(numberUser);
         editAddress.setText(addressUser);
+
+        Log.d("ProfileImage", "Profile Image URL: " + profileImageUrl);
+
+        // Load and display the profile image using Glide
+        if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
+            Glide.with(this)
+                    .load(profileImageUrl)
+                    .skipMemoryCache(true)  // Skip memory cache
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)  // Skip disk cache
+                    .into(profileImage);
+        }
     }
 
     private void saveChanges() {
@@ -97,21 +110,17 @@ public class EditProfileActivity extends AppCompatActivity {
         String updatedNumber = editNumber.getText().toString().trim();
         String updatedAddress = editAddress.getText().toString().trim();
 
-        // Update data in the Firebase Realtime Database
         reference.child(userId).child("fullName").setValue(updatedName);
         reference.child(userId).child("email").setValue(updatedEmail);
         reference.child(userId).child("phone").setValue(updatedNumber);
         reference.child(userId).child("address").setValue(updatedAddress);
 
-        // Simulate a delay for demonstration purposes (replace with your actual data update logic)
         new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        hideLoadingIndicator();
-                        Toast.makeText(EditProfileActivity.this, "Changes saved successfully", Toast.LENGTH_SHORT).show();
-                    }
+                () -> {
+                    hideLoadingIndicator();
+                    Toast.makeText(EditProfileActivity.this, "Changes saved successfully", Toast.LENGTH_SHORT).show();
                 },
-                2000 // 2 seconds delay (adjust as needed)
+                2000
         );
     }
 
@@ -127,7 +136,7 @@ public class EditProfileActivity extends AppCompatActivity {
             progressDialog.dismiss();
         }
     }
-    //new
+
     private void openGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -147,37 +156,27 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void uploadImage() {
         if (imageUri != null) {
-            // Create a reference to store the image in Firebase Storage
             StorageReference fileReference = storageRef.child("profile_images/" + userId + "/" + System.currentTimeMillis() + "." + getFileExtension(imageUri));
 
-            // Upload image to Firebase Storage
             fileReference.putFile(imageUri)
                     .addOnSuccessListener(taskSnapshot -> {
-                        // Get the image download URL from Firebase Storage
-                        fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                            // Save the image URL to the user's data in the Realtime Database
-                            reference.child(userId).child("profileImageUrl").setValue(uri.toString());
+                        Log.d("ImageUpload", "Image uploaded successfully");
 
-                            // Show a message or update UI upon successful image upload
+                        fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                            reference.child(userId).child("profileImageUrl").setValue(uri.toString());
                             Toast.makeText(EditProfileActivity.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
                         });
                     })
                     .addOnFailureListener(e -> {
-                        // Handle image upload failure
+                        Log.e("ImageUpload", "Image upload failed: " + e.getMessage());
                         Toast.makeText(EditProfileActivity.this, "Image upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
         }
     }
 
-    // ... (Other methods)
-
-    // getFileExtension() method to get the file extension from the URI
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 }
-
-
-

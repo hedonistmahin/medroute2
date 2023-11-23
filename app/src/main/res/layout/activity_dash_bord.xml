@@ -321,9 +321,9 @@
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:iss_period="1000"
+            app:iss_period="2500"
             app:iss_auto_cycle="true"
-            app:iss_delay="1000"
+            app:iss_delay="6500"
             app:iss_corner_radius="20"
             app:iss_title_background="@drawable/gradient"
             />
