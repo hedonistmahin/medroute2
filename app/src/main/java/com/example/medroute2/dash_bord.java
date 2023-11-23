@@ -31,7 +31,7 @@ public class dash_bord extends Activity {
     TextView displayNamed;
     RelativeLayout relativeLayoutICU;
     RelativeLayout relativeLayoutBed;
-    RelativeLayout relativeLayoutBlood;
+    RelativeLayout relativeLayoutBlood1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -41,8 +41,8 @@ public class dash_bord extends Activity {
         setContentView(R.layout.activity_dash_bord);
         relativeLayoutICU=findViewById(R.id.icu);
         relativeLayoutBed=findViewById(R.id.bed);
-        relativeLayoutBlood=findViewById(R.id.blood);
-        relativeLayoutBlood.setOnClickListener(new View.OnClickListener() {
+        relativeLayoutBlood1=findViewById(R.id.blood);
+        relativeLayoutBlood1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentBlood=new Intent(dash_bord.this,BloodBankPage.class);
