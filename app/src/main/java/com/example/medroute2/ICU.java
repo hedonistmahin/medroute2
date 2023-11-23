@@ -32,35 +32,35 @@ public class ICU extends AppCompatActivity {
 
         recyclerView_icu = findViewById(R.id.icuRecylarview_1);
         ArrayList<ICUmodel> list=new ArrayList<>();
-        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new ICUmodel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
 
-        list.add(new ICUmodel(R.drawable.japan, "Japan Bangladesh Friendship HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.japan, "Japan Bangladesh Friendship Hospital"));
         list.add(new ICUmodel(R.drawable.bsmmu, "Bangabandhu Sheikh Mujib Medical University "));
         list.add(new ICUmodel(R.drawable.birdem, "BIRDEM GENERAL HOSPITAL"));
-        list.add(new ICUmodel(R.drawable.popular, "Popular Medical College HospitalModel.Hospital"));
-        list.add(new ICUmodel(R.drawable.smch, "Shaheed Suhrawardy Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.popular, "Popular Medical College Hospital"));
+        list.add(new ICUmodel(R.drawable.smch, "Shaheed Suhrawardy Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.evercare, "Evercare Hospitals Bangladesh"));
         list.add(new ICUmodel(R.drawable.brb, "BRB Hospitals Limited"));
-        list.add(new ICUmodel(R.drawable.ma, "Chattogram Maa O Shishu HospitalModel.Hospital Medical College"));
+        list.add(new ICUmodel(R.drawable.ma, "Chattogram Maa O Shishu  Medical College"));
         list.add(new ICUmodel(R.drawable.rajshahi, "Rajshahi Medical College"));
-        list.add(new ICUmodel(R.drawable.lch, "Labaid Cardiac HospitalModel.Hospital "));
-        list.add(new ICUmodel(R.drawable.labaed, "Labaid Specialized HospitalModel.Hospital"));
-        list.add(new ICUmodel(R.drawable.anowr, "Anwer Khan Modern Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.lch, "Labaid Cardiac Hospital "));
+        list.add(new ICUmodel(R.drawable.labaed, "Labaid Specialized Hospital"));
+        list.add(new ICUmodel(R.drawable.anowr, "Anwer Khan Modern Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.heard, "National Institute of Cardiovascular Diseases"));
-        list.add(new ICUmodel(R.drawable.united, "United HospitalModel.Hospital Limited."));
+        list.add(new ICUmodel(R.drawable.united, "United Hospital Limited."));
 
-        list.add(new ICUmodel(R.drawable.kurmi,"Kurmitola General HospitalModel.Hospital" ));
+        list.add(new ICUmodel(R.drawable.kurmi,"Kurmitola General Hospital" ));
         list.add(new ICUmodel(R.drawable.nheard, "National Heart Foundation of Bangladesh"));
 
-        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new ICUmodel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
 
@@ -70,39 +70,37 @@ public class ICU extends AppCompatActivity {
 
 
 
-
-        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new ICUmodel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
 
-        list.add(new ICUmodel(R.drawable.japan, "Japan Bangladesh Friendship HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.japan, "Japan Bangladesh Friendship Hospital"));
         list.add(new ICUmodel(R.drawable.bsmmu, "Bangabandhu Sheikh Mujib Medical University "));
         list.add(new ICUmodel(R.drawable.birdem, "BIRDEM GENERAL HOSPITAL"));
-        list.add(new ICUmodel(R.drawable.popular, "Popular Medical College HospitalModel.Hospital"));
-        list.add(new ICUmodel(R.drawable.smch, "Shaheed Suhrawardy Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.popular, "Popular Medical College Hospital"));
+        list.add(new ICUmodel(R.drawable.smch, "Shaheed Suhrawardy Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.evercare, "Evercare Hospitals Bangladesh"));
         list.add(new ICUmodel(R.drawable.brb, "BRB Hospitals Limited"));
-        list.add(new ICUmodel(R.drawable.ma, "Chattogram Maa O Shishu HospitalModel.Hospital Medical College"));
+        list.add(new ICUmodel(R.drawable.ma, "Chattogram Maa O Shishu  Medical College"));
         list.add(new ICUmodel(R.drawable.rajshahi, "Rajshahi Medical College"));
-        list.add(new ICUmodel(R.drawable.lch, "Labaid Cardiac HospitalModel.Hospital "));
-        list.add(new ICUmodel(R.drawable.labaed, "Labaid Specialized HospitalModel.Hospital"));
-        list.add(new ICUmodel(R.drawable.anowr, "Anwer Khan Modern Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.lch, "Labaid Cardiac Hospital "));
+        list.add(new ICUmodel(R.drawable.labaed, "Labaid Specialized Hospital"));
+        list.add(new ICUmodel(R.drawable.anowr, "Anwer Khan Modern Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.heard, "National Institute of Cardiovascular Diseases"));
-        list.add(new ICUmodel(R.drawable.united, "United HospitalModel.Hospital Limited."));
+        list.add(new ICUmodel(R.drawable.united, "United Hospital Limited."));
 
-        list.add(new ICUmodel(R.drawable.kurmi,"Kurmitola General HospitalModel.Hospital" ));
+        list.add(new ICUmodel(R.drawable.kurmi,"Kurmitola General Hospital" ));
         list.add(new ICUmodel(R.drawable.nheard, "National Heart Foundation of Bangladesh"));
 
-        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new ICUmodel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new ICUmodel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new ICUmodel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
-
 
 
 

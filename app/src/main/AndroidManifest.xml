@@ -13,6 +13,33 @@
         android:theme="@style/Theme.Medroute2"
         tools:targetApi="34">
         <activity
+            android:name=".Onegative"
+            android:exported="false" />
+        <activity
+            android:name=".ABnegative"
+            android:exported="false" />
+        <activity
+            android:name=".Bnegative"
+            android:exported="false" />
+        <activity
+            android:name=".Anegative"
+            android:exported="false" />
+        <activity
+            android:name=".Opositive"
+            android:exported="false" />
+        <activity
+            android:name=".ABpositive"
+            android:exported="false" />
+        <activity
+            android:name=".Bpositive"
+            android:exported="false" />
+        <activity
+            android:name=".Apositive"
+            android:exported="false" />
+        <activity
+            android:name=".BloodBankPage"
+            android:exported="false" />
+        <activity
             android:name=".Bed"
             android:exported="false" />
         <activity

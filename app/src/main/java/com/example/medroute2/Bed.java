@@ -31,35 +31,35 @@ RecyclerView recyclerView_bed;
           recyclerView_bed=findViewById(R.id.bedRecylerview);
 
         ArrayList<BedModel> list=new ArrayList<>();
-        list.add(new BedModel (R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new BedModel (R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new BedModel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new BedModel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
 
-        list.add(new BedModel(R.drawable.japan, "Japan Bangladesh Friendship HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.japan, "Japan Bangladesh Friendship Hospital"));
         list.add(new BedModel(R.drawable.bsmmu, "Bangabandhu Sheikh Mujib Medical University "));
         list.add(new BedModel(R.drawable.birdem, "BIRDEM GENERAL HOSPITAL"));
-        list.add(new BedModel(R.drawable.popular, "Popular Medical College HospitalModel.Hospital"));
-        list.add(new BedModel(R.drawable.smch, "Shaheed Suhrawardy Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.popular, "Popular Medical College Hospital"));
+        list.add(new BedModel(R.drawable.smch, "Shaheed Suhrawardy Medical College Hospital"));
         list.add(new BedModel(R.drawable.evercare, "Evercare Hospitals Bangladesh"));
         list.add(new BedModel(R.drawable.brb, "BRB Hospitals Limited"));
         list.add(new BedModel(R.drawable.ma, "Chattogram Maa O Shishu HospitalModel.Hospital Medical College"));
         list.add(new BedModel(R.drawable.rajshahi, "Rajshahi Medical College"));
-        list.add(new BedModel(R.drawable.lch, "Labaid Cardiac HospitalModel.Hospital "));
-        list.add(new BedModel(R.drawable.labaed, "Labaid Specialized HospitalModel.Hospital"));
-        list.add(new BedModel (R.drawable.anowr, "Anwer Khan Modern Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.lch, "Labaid Cardiac Hospitale"));
+        list.add(new BedModel(R.drawable.labaed, "Labaid Specialized Hospital"));
+        list.add(new BedModel (R.drawable.anowr, "Anwer Khan Modern Medical College Hospital"));
         list.add(new BedModel(R.drawable.heard, "National Institute of Cardiovascular Diseases"));
-        list.add(new BedModel(R.drawable.united, "United HospitalModel.Hospital Limited."));
+        list.add(new BedModel(R.drawable.united, "United Hospital"));
 
-        list.add(new BedModel(R.drawable.kurmi,"Kurmitola General HospitalModel.Hospital" ));
+        list.add(new BedModel(R.drawable.kurmi,"Kurmitola General Hospital" ));
         list.add(new BedModel(R.drawable.nheard, "National Heart Foundation of Bangladesh"));
 
-        list.add(new BedModel(R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new BedModel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new BedModel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
 
@@ -69,48 +69,37 @@ RecyclerView recyclerView_bed;
 
 
 
-
-        list.add(new BedModel (R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new BedModel (R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new BedModel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new BedModel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
 
-        list.add(new BedModel(R.drawable.japan, "Japan Bangladesh Friendship HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.japan, "Japan Bangladesh Friendship Hospital"));
         list.add(new BedModel(R.drawable.bsmmu, "Bangabandhu Sheikh Mujib Medical University "));
         list.add(new BedModel(R.drawable.birdem, "BIRDEM GENERAL HOSPITAL"));
-        list.add(new BedModel(R.drawable.popular, "Popular Medical College HospitalModel.Hospital"));
-        list.add(new BedModel(R.drawable.smch, "Shaheed Suhrawardy Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.popular, "Popular Medical College Hospital"));
+        list.add(new BedModel(R.drawable.smch, "Shaheed Suhrawardy Medical College Hospital"));
         list.add(new BedModel(R.drawable.evercare, "Evercare Hospitals Bangladesh"));
         list.add(new BedModel(R.drawable.brb, "BRB Hospitals Limited"));
         list.add(new BedModel(R.drawable.ma, "Chattogram Maa O Shishu HospitalModel.Hospital Medical College"));
         list.add(new BedModel(R.drawable.rajshahi, "Rajshahi Medical College"));
-        list.add(new BedModel(R.drawable.lch, "Labaid Cardiac HospitalModel.Hospital "));
-        list.add(new BedModel(R.drawable.labaed, "Labaid Specialized HospitalModel.Hospital"));
-        list.add(new BedModel (R.drawable.anowr, "Anwer Khan Modern Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.lch, "Labaid Cardiac Hospitale"));
+        list.add(new BedModel(R.drawable.labaed, "Labaid Specialized Hospital"));
+        list.add(new BedModel (R.drawable.anowr, "Anwer Khan Modern Medical College Hospital"));
         list.add(new BedModel(R.drawable.heard, "National Institute of Cardiovascular Diseases"));
-        list.add(new BedModel(R.drawable.united, "United HospitalModel.Hospital Limited."));
+        list.add(new BedModel(R.drawable.united, "United Hospital"));
 
-        list.add(new BedModel(R.drawable.kurmi,"Kurmitola General HospitalModel.Hospital" ));
+        list.add(new BedModel(R.drawable.kurmi,"Kurmitola General Hospital" ));
         list.add(new BedModel(R.drawable.nheard, "National Heart Foundation of Bangladesh"));
 
-        list.add(new BedModel(R.drawable.dhaka, "Dhaka Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.dhaka, "Dhaka Medical College Hospital"));
         list.add(new BedModel(R.drawable.cmc, "Chittagong Medical Collge"));
 
-        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College HospitalModel.Hospital"));
+        list.add(new BedModel(R.drawable.islamic, "Islami Bank Medical College Hospital"));
 
         list.add(new BedModel(R.drawable.squre, "SQUARE HOSPITALS LTD"));
-
-
-
-
-
-
-
-
-
-
 
 
 

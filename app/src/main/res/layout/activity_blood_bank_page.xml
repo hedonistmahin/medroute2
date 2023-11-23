@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BloodBankPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:background="@drawable/shape"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blood Bank"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+
+            />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:layout_below="@id/headerLayout"
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/apositive"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ap" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="A +"
+
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/bpositive"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/bp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    android:text="B +"
+                    android:textSize="20dp"
+
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/abpositive"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/abp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    android:text="AB +"
+                    android:textSize="20dp"
+
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@id/headerLayout"
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/opositive"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/op" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="O +"
+
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/anegative"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/an" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="A -"
+
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/bnegative"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/bn" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="B -"
+
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@id/headerLayout"
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/abnegative"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/apn" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    android:text="AB -"
+                    android:textSize="20dp"
+
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:id="@+id/onegative"
+                android:background="@drawable/menu_sape"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+
+
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/on1" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+
+                    android:text="O -"
+                    android:textSize="20dp"
+
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

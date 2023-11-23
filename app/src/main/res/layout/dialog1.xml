@@ -10,14 +10,16 @@
 
     <TextView
         android:id="@+id/select"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
+        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
 
        android:gravity="center"
 
-        android:text="Select"
+        android:text="Confirm your booking by pressing ok"
         android:textColor="@color/prime_color"
-        android:textSize="60dp"
+        android:textSize="25dp"
         android:textStyle="bold" />
 
 
@@ -39,7 +41,7 @@
 
             android:layout_height="50dp"
             android:textAllCaps="false"
-            android:text="Cancel"
+            android:text="No"
             android:textSize="25dp"
             android:textColor="@color/white"
             android:background="@drawable/squre_shape"
