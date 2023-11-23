@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:id="@+id/b"
+    android:id="@+id/ambulanceLayout"
     android:layout_height="wrap_content"
     android:padding="5dp">
 
@@ -22,7 +22,7 @@
 
 
             <TextView
-                android:id="@+id/blood_name"
+                android:id="@+id/ambulanceName"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,18 +44,18 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:id="@+id/location"
-                    android:src="@drawable/baseline_location_on_24"
+                    android:id="@+id/contact"
+                    android:src="@drawable/baseline_call_24"
 
                     />
 
                 <TextView
-                    android:id="@+id/blood_location"
+                    android:id="@+id/ambulance_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/location"
+                    android:layout_toRightOf="@+id/contact"
                     android:text="tttt"
                     android:textSize="18dp"
                     android:textStyle="bold" />

@@ -34,7 +34,7 @@ public class dash_bord extends Activity {
     private FirebaseAuth mAuth;
     TextView displayNamed;
     RelativeLayout relativeLayoutICU;
-    RelativeLayout relativeLayoutBed, relativeLayoutBlood;
+    RelativeLayout relativeLayoutBed, relativeLayoutBlood,relativeLayoutAmbulance ;
     CircleImageView profileimage1;
 
     @Override
@@ -47,6 +47,12 @@ public class dash_bord extends Activity {
         relativeLayoutBed=findViewById(R.id.bed);
         relativeLayoutBlood=findViewById(R.id.blood);
         profileimage1 = findViewById(R.id.profile_image);
+
+        relativeLayoutAmbulance=findViewById(R.id.ambulance);
+
+
+
+
          relativeLayoutICU.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -68,6 +74,13 @@ public class dash_bord extends Activity {
             public void onClick(View view) {
                 Intent intentBed= new Intent(dash_bord.this, BloodBankPage.class);
                 startActivity(intentBed);
+            }
+        });
+        relativeLayoutAmbulance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentA=new Intent(dash_bord.this,Ambulance1.class);
+                startActivity(intentA);
             }
         });
 
