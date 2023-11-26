@@ -40,7 +40,7 @@ public class user_profile extends Activity {
     private FirebaseAuth mAuth;
 
     private Button Logout;
-    private TextInputEditText profileName, profileEmail, profileNumber, profileAddress;
+    private TextView profileName, profileEmail, profileNumber, profileAddress;
     TextView displayName;
     Button editprofile;
     CircleImageView profileimage;
