@@ -45,7 +45,7 @@ public class Pharmacy extends FragmentActivity implements OnMapReadyCallback {
         }
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map1);
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         checkLocationPermission();
