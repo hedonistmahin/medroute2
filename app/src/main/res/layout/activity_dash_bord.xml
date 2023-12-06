@@ -209,7 +209,9 @@
             <RelativeLayout
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:background="@drawable/menu_sape"
+                android:id="@+id/pharmacy"
+
+               android:background="@drawable/menu_sape"
                 >
 
                 <ImageView
@@ -277,6 +279,7 @@
             <RelativeLayout
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:id="@+id/emergency1"
                 android:background="@drawable/menu_sape"
                 >
 

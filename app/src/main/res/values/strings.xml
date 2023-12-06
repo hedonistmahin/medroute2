@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">medroute2</string>
+    <string name="title_activity_hospital_map">HospitalMap</string>
+    <string name="title_activity_hospital_map1">HospitalMap1</string>
+    <string name="title_activity_hospital_map2">HospitalMap2</string>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_pharmacy">Pharmacy</string>
+
 </resources>
