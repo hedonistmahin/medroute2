@@ -1,4 +1,8 @@
+# MedRoute
 
+![MedRoute Logo](./mahin-removebg-preview.png)
+
+*Revolutionizing mobile healthcare access with real-time emergency and healthcare services.*
 
 # MedRoute - A Mobile Health Solution
 
